@@ -1,1 +1,1 @@
-{"name":"KARA","age":43,"isAdult":true}{"name":"KARA","age":43,"isAdult":true}{"name":"ANDRII","age":13,"isAdult":false}
+{"name":"ANDRII","age":13,"isAdult":false}{"name":"DEN","age":30,"isAdult":true}{"name":"KAREN","age":12,"isAdult":false}

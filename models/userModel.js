@@ -1,4 +1,7 @@
-const { writeFile } = require('fs/promises');
+const fs = require('fs').promises;
+const path  = require('path');
+
+const dbPath = path.join(__dirname, 'db.txt');
 
 const user = (name, age, isAdult) => {
     return {
@@ -25,15 +28,14 @@ async function getUser(body) {
 }
 
 async function saveUser(body) {
-    const userBody = await getUser(body);
-    
     try {
-        await writeFile(__dirname + '/db.txt', JSON.stringify(userBody), {flag: 'a+'}); // flaf a+ means that data in file won't be replaces
+        const userBody = await getUser(body);
+        await fs.writeFile(dbPath, JSON.stringify(userBody), {flag: 'a+'}); // flaf a+ means that data in file won't be replaces
+        return userBody;
     } catch (err) {
         console.log(err.message);
+        return err;
     }
-
-    return userBody;
 }
 
 module.exports = saveUser;
