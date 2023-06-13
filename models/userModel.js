@@ -1,4 +1,4 @@
-function user(name, age, isAdult) {
+const user = (name, age, isAdult) => {
     return {
         name,
         age,
@@ -6,7 +6,7 @@ function user(name, age, isAdult) {
     }
 }
 
-function saveUser(body) {
+async function saveUser(body) {
     if (body.age < 18) {
         return user(
             body.name.toUpperCase(),
