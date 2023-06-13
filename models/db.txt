@@ -1,1 +1,1 @@
-done
+{"name":"KARA","age":43,"isAdult":true}{"name":"KARA","age":43,"isAdult":true}{"name":"ANDRII","age":13,"isAdult":false}

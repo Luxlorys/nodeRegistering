@@ -1,4 +1,4 @@
-const { readFile } = require('fs').promises;
+const { writeFile } = require('fs/promises');
 
 const user = (name, age, isAdult) => {
     return {
@@ -25,11 +25,15 @@ async function getUser(body) {
 }
 
 async function saveUser(body) {
-    const user = await getUser(body);
-    const file = await readFile(__dirname + '/db.txt', 'utf8');
-    console.log(file);
+    const userBody = await getUser(body);
+    
+    try {
+        await writeFile(__dirname + '/db.txt', JSON.stringify(userBody), {flag: 'a+'}); // flaf a+ means that data in file won't be replaces
+    } catch (err) {
+        console.log(err.message);
+    }
 
-    return user;
+    return userBody;
 }
 
 module.exports = saveUser;
